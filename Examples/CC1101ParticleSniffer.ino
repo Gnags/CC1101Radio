@@ -119,6 +119,16 @@ void setup()
 	// Photon, Arduino Uno, Mini, Mega & Due is given a uniq device Address in CC1101Radio.h
 	// If more than one of each board is used, they will get the samme address. I that case change device Address below
 	// cc1101.deviceData.deviceAddress = 99;
+	#ifdef ARDUINO
+		pinMode(9,INPUT);
+		if(digitalRead(9)==LOW)
+		cc1101.deviceData.deviceAddress++;
+		
+		Serial.println("\r\nAdded 1 to deviceAddress becourse D9 is connected to ground");
+	#endif
+	
+	
+	
 	
 	// remoteDeviceAddress is set to '0'. This means broadcast to all cc1101 devices
 	cc1101.deviceData.remoteDeviceAddress = 0;

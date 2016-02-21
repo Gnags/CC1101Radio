@@ -735,6 +735,10 @@ void CC1101Radio::updateDeviceList(CC1101Radio::CCPACKET *pkt) {
 	if(firstEmptyIdx >= 0) {
 		deviceList[firstEmptyIdx] = pkt->data[1];
 		newDeviceAdded = true;
+		Serial.print("New remote device #");
+		Serial.print(deviceList[firstEmptyIdx]);
+		Serial.print(" is added idx ");Serial.println(firstEmptyIdx);
+
 	}
 
 }
