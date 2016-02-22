@@ -1,9 +1,6 @@
 /* 
-210220161831
 
 This is a example sketch for the CC1101Radio library
-
-The CC1101 low level part of the sketch is copied from the PanStamp CC1101 library.
 
 The sketch will:
 
@@ -15,7 +12,7 @@ The sketch will:
         - every 4 times, a list of active devices (cc1101 addresses), will be published instead
 
 
-The sketch is tested (not intensely) using a:
+The sketch is testet (not intensly) using a:
     * Photon board and firmware 4.09
     * Arduino Due board
     * Arduino Mini 3.3v
@@ -127,7 +124,7 @@ void setup()
 		if(digitalRead(9)==LOW)
 		cc1101.deviceData.deviceAddress++;
 		
-		Serial.println("\r\nAdded 1 to deviceAddress be course D9 is connected to ground");
+		Serial.println("\r\nAdded 1 to deviceAddress becourse D9 is connected to ground");
 	#endif
 	
 	
@@ -208,14 +205,8 @@ void sendPacket() {
 	packetsSend++;
 	packetsSendBytes+=pkt.length;
 
-
-
-Serial.print("\r\nCC1101#");
-Serial.print(cc1101.deviceData.deviceAddress);
-Serial.print(" send package#");
+	Serial.print("\r\nSend packet #");
 	Serial.print(packetNum);
-Serial.print(" ");
-
 	Serial.print(" -");
 	cc1101.printCCPACKETdata(&pkt);
 	packetNum++;
@@ -247,15 +238,8 @@ bool receivePacket() {
 			packetsReceived++;
 			packetsReceivedBytes+=pkt.length;
 
-			Serial.print("\r\nCC1101#");
-			Serial.print(cc1101.deviceData.deviceAddress);
-			Serial.print(" got a packet from CC1101#");
-			Serial.print(pkt.data[1]);
-			
-			Serial.print(" msgId #");
-			Serial.print(pkt.data[2]+pkt.data[3]*256);
-						
-			Serial.print(" - length ");
+			Serial.print("\r\nCC1101 have news! - ");
+			Serial.print("Package len = ");
 			Serial.print(pkt.length);
 			Serial.print(" lgi=");
 			Serial.print(pkt.lqi);
